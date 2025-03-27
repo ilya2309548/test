@@ -8,18 +8,24 @@ export const AuthProvider = ({ children }) => {
   const [keycloak, setKeycloak] = useState(null);
 
   useEffect(() => {
+    const keycloakInstance = getKeycloak();
+    setKeycloak(keycloakInstance);
+    
     initKeycloak(() => {
       setAuthenticated(true);
-      setKeycloak(getKeycloak());
     });
   }, []);
 
   const login = () => {
-    keycloak.login();
+    if (keycloak) {
+      keycloak.login();
+    }
   };
 
   const logout = () => {
-    keycloak.logout();
+    if (keycloak) {
+      keycloak.logout();
+    }
   };
 
   return (
