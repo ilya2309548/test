@@ -1,8 +1,8 @@
 import Keycloak from 'keycloak-js';
 
 const keycloak = new Keycloak({
-  url: 'http://localhost:8080/',
-  realm: 'forum',
+  url: 'http://147.45.219.199:8080/',
+  realm: 'Forum',
   clientId: 'forum-client',
 });
 
