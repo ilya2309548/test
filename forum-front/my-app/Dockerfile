@@ -17,10 +17,19 @@ COPY --from=deps /app /app
 COPY ./public ./public
 COPY ./src ./src
 
+# Устанавливаем переменную окружения для production сборки
+ENV NODE_ENV=production
 RUN npm run build
 
-# Экспонируем порт для запуска приложения
-EXPOSE 3000
+# Этап production
+FROM nginx:alpine
 
-# Запуск приложения
-CMD ["npm", "start"]
+# Копируем собранные файлы из этапа сборки
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Копируем конфигурацию nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
