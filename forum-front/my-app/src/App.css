@@ -1,0 +1,30 @@
+/* App.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Мягкий шрифт */
+  background-image: url('../background.jpg'); /* Путь к вашему изображению */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон для контента */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+  font-weight: 400; /* Мягкий шрифт для заголовков */
+  color: #ff8c42; /* Бледно-оранжевый цвет для заголовков */
+}
+
+a, button {
+  transition: all 0.3s ease; /* Плавные переходы для ссылок и кнопок */
+}
