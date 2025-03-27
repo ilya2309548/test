@@ -1,11 +1,19 @@
 FROM eclipse-temurin:17-jdk-alpine as build
 WORKDIR /workspace/app
 
+# Установка необходимых зависимостей
+RUN apk add --no-cache curl
+
+# Копирование файлов проекта
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
+# Установка прав на выполнение для mvnw
+RUN chmod +x mvnw
+
+# Сборка приложения
 RUN ./mvnw install -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
